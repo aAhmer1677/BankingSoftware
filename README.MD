@@ -32,8 +32,8 @@ A command-line banking simulation built with Python. This project demonstrates b
 1. Clone the repository:
 
 ```bash
-git clone <your-repo-url>
-cd <your-repo-folder>
+git clone https://github.com/aAhmer1677/BankingSoftware.git
+cd BankingSoftware
 ```
 
 2. Run the main application:
