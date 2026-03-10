@@ -1,84 +1,79 @@
 # Banking Software (Python CLI)
 
-A simple command-line banking simulation written in Python. The app supports account registration, login verification, deposits, withdrawals, and balance checks using text files for storage.
+A command-line banking simulation built with Python. This project demonstrates basic account operations, lightweight verification, and file-based data persistence.
 
 ## Features
 
-- User registration with a 10-digit PIN
-- Account-based login
-- Two-step verification for sensitive actions:
-- Random 3-digit position check from the PIN
-- Time-based OTP (valid for 2 minutes)
-- Deposit cash
-- Withdraw cash (with insufficient balance protection)
-- Check account balance
+- Account registration with a 10-digit PIN
+- Login and operation verification
+- PIN digit-position challenge (3 random positions)
+- Time-based OTP (6 digits, valid for 2 minutes)
+- Deposit funds
+- Withdraw funds with balance checks
+- View account balance
 - Transaction history logging
 
-## Project Structure
-
-- `main.py`: Main banking application flow
-- `otp_gen.py`: Helper script to generate a valid OTP for testing
-- `user_usernames.txt`: Stores usernames (1 line per account)
-- `user_pins.txt`: Stores PINs (1 line per account)
-- `user_cash.txt`: Stores balances (1 line per account)
-- `transactions_history.txt`: Stores activity logs
-
-## Requirements
+## Tech Stack
 
 - Python 3.8+
-- No external dependencies (standard library only)
+- Standard library only (no external packages)
 
-## How To Run
+## Repository Structure
 
-1. Open a terminal in the project folder:
-```powershell
-cd "c:\Bulu Ahmer\Banking Software"
+- `main.py` - Main application entry point and banking workflows
+- `otp_gen.py` - Utility script to generate OTP for testing/demo
+- `user_usernames.txt` - Username records (line-based)
+- `user_pins.txt` - PIN records (line-based)
+- `user_cash.txt` - Balance records (line-based)
+- `transactions_history.txt` - Transaction and account activity logs
+
+## Getting Started
+
+1. Clone the repository:
+
+```bash
+git clone <your-repo-url>
+cd <your-repo-folder>
 ```
-2. Start the main app:
-```powershell
+
+2. Run the main application:
+
+```bash
 python main.py
 ```
 
-## OTP Flow (Important)
+## How OTP Works
 
-The application asks for a 6-digit OTP during login and before sensitive actions. OTP is generated from:
+The OTP is generated using:
 
 - Account number
 - Full PIN
 - Current 2-minute time window
 
-To generate a matching OTP for testing:
+To generate a matching OTP during testing:
 
-```powershell
+```bash
 python otp_gen.py
 ```
 
-Then enter the same account number and full PIN to get the OTP and paste it into `main.py` when prompted.
+Use the same account number and full PIN when prompted so the OTP matches what `main.py` expects.
 
-## Usage Overview
+## Usage Flow
 
-1. Run `main.py`
-2. Enter account number
-- Enter `-1` to register a new account
-3. Complete PIN-position verification and OTP check
-4. Choose an option:
-- `1` Deposit cash
-- `2` Withdraw cash
-- `3` Check balance
-- `4` Terminate session
+1. Start the app with `python main.py`.
+2. Enter account number.
+3. Enter `-1` if you want to register a new account.
+4. Complete the PIN-position check and OTP verification.
+5. Choose an operation (`1` Deposit, `2` Withdraw, `3` Check Balance, `4` Terminate Session).
 
-## Notes
+## Important Notes
 
-- Data is stored in plain text files for learning/demo purposes.
-- Account number maps to line number in the data files.
-- `main.py` auto-creates required `.txt` files if missing.
-- This project is not production-ready security-wise.
+- This project stores data in plain text files.
+- Account numbers map directly to line numbers across data files.
+- Missing data files are auto-created on startup.
+- This is for learning/demo use, not production banking.
 
-## Future Improvements
 
-- Hash and salt PINs instead of storing plain text
-- Add input validation for usernames and account fields
-- Add unit tests
-- Use a real database (SQLite/PostgreSQL)
-- Add transfer between accounts
+## License
 
+This project is licensed under the MIT License. See `LICENSE` for details.
